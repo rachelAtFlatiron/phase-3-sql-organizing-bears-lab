@@ -1,6 +1,7 @@
 describe 'creating bears table' do
   let(:db) do
     SQLite3::Database.new(':memory:')
+    #SQLite3::Database.new('db/bears.sql')
   end
 
   before do
@@ -35,4 +36,5 @@ describe 'creating bears table' do
   it "creates a bears table with an id as a primary key" do
     expect(db.execute("PRAGMA table_info(bears);").detect { |arr| arr[-1] == 1 && arr[2] == "INTEGER" }.length).to eq(6)
   end
+
 end
